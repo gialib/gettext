@@ -51,7 +51,7 @@ defmodule Gettext.Extractor do
   Note that this function doesn't perform any operation on the filesystem.
   """
   @spec extract(Macro.Env.t, module, binary, binary | {binary, binary}, [binary]) :: :ok
-  def extract(%Macro.Env{file: file, line: line} = _caller, backend, domain, id, extracted_comments) do
+  def extract(%Macro.Env{file: file, line: line} = _caller, backend, domain, id, extracted_comments \\ []) do
     ExtractorAgent.add_translation(backend, domain, create_translation_struct(id, file, line, extracted_comments))
   end
 
